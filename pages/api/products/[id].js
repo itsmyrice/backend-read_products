@@ -6,11 +6,10 @@ export default async function handler(request, response) {
   const { id } = request.query;
 
   if(request.method === "GET") {
-  const product = await Product.findByID(id);
-  if (!product) {
+  const product = await Product.findById(id);
+    if (!product) {
     return response.status(404).json({ status: "Not Found" });
-  }
+    }
   response.status(200).json(product);
-}
-  response.status(405).json({ status: "Method not allowed"});
+  }
 }
